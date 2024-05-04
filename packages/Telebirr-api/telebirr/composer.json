@@ -1,0 +1,28 @@
+{
+    "name": "dagim/telebirr-api",
+    "description": "Simplify integration of Telebirr's payment gateway into Laravel applications. Generate payment URLs, handle notifications, and ensure secure transactions effortlessly. With robust error handling and configuration flexibility, streamline Telebirr payment integration in your Laravel projects.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Dagim\\TelebirrApi\\": "src/",
+            "Dagim\\TelebirrApi\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dagim Assefa",
+            "email": "dagim.assefa098@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dagim\\TelebirrApi\\TelebirrServiceProvider"
+            ]
+        }
+    }
+}
