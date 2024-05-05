@@ -37,7 +37,7 @@ Telebirr Laravel Integration Package is a Laravel helper package for integrating
 | code      | String    | Mandatory          | Status code for payment request                                              | 0                                          |
 | msg       | String    | Mandatory          | Status code description for payment request                                  | success                                    |
 | data      | Object    | Mandatory          | Data object consisting of the toPayURL                                       |                                            |
-| toPayUrl  | String    | Mandatory          | Telebirr payment landing page URL to redirect the customer to H5 Web Payment | https://h5pay.trade.pay/payId=RE9879T0972S |
+| toPayUrl  | String    | Mandatory          | Telebirr payment landing page URL to redirect the customer to H5 Web Payment | https://example.com/telebir/payId=RE9879T0972S |
 
 ### Getting Started
 
