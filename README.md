@@ -46,3 +46,45 @@ Telebirr Laravel Integration Package is a Laravel helper package for integrating
 ```bash
 composer require dagim/telebirr-api
 ```
+
+## Usage Example
+
+```php
+use Dagim\TelebirrApi\Telebirr;
+
+$telebirr = new Telebirr(
+    env('TELEBIRR_APP_ID'),
+    env('TELEBIRR_APP_KEY'),
+    env('TELEBIRR_PUBLIC_KEY'),
+    env('TELEBIRR_PRIVATE_KEY'),
+    env('TELEBIRR_API_URL'),
+    env('TELEBIRR_SHORT_CODE'),
+    env('TELEBIRR_NOTIFY_URL'),
+    env('TELEBIRR_RETURN_URL'),
+    env('TELEBIRR_TIMEOUT_EXPRESS'),
+    env('TELEBIRR_RECEIVE_NAME')
+);
+
+$title = 'Product Purchase';
+$amount = 100.00;
+$orderResult = $telebirr->createOrder($title, $amount);
+
+if ($orderResult['success']) {
+    // Payment creation successful
+    $paymentId = $orderResult['payment_id'];
+    // Proceed with further actions
+} else {
+    // Payment creation failed
+    $errorMessage = $orderResult['message'];
+    // Handle the error
+}
+
+use Dagim\TelebirrApi\TelebirrNotificationHandler;
+
+$publicKey = "YOUR PUBLIC KEY FROM TELEBIRR ADMIN";
+$payload = "Payload coming from Telebirr"; // This could be request.body if using Django
+
+$decryptedData = TelebirrNotificationHandler::decrypt($publicKey, $payload);
+
+// Handle decrypted data (e.g., update order status)
+```
