@@ -23,7 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Dagim\\TelebirrApi\\TelebirrServiceProvider"
+        "Dagim\\TelebirrApi\\Providers\\TelebirrServiceProvider"
       ]
     }
   }
