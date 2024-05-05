@@ -44,7 +44,7 @@ Telebirr Laravel Integration Package is a Laravel helper package for integrating
 #### Install the Telebirr Laravel Integration Package:
 
 ```bash
-composer require dagim/telebirr-api
+composer require dagim/telebirr-api:dev-main
 ```
 
 ## Usage Example
