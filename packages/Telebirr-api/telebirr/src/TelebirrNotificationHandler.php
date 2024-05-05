@@ -33,9 +33,8 @@ class TelebirrNotificationHandler
         // Decrypt the payment data
         $decryptedPaymentData = $this->decryptPaymentData($encryptedData);
 
-        // print out the decrypted payment data
-
-        echo $decryptedPaymentData;
+        // Process the decrypted payment data
+        $this->processPaymentData($decryptedPaymentData);
     }
 
     /**
@@ -61,6 +60,19 @@ class TelebirrNotificationHandler
         }
 
         return $decryptedData;
+    }
+
+    /**
+     * Processes the decrypted payment data.
+     *
+     * @param string $paymentData Decrypted payment data
+     * @return void
+     */
+    private function processPaymentData(string $paymentData): void
+    {
+        // Implement your logic to process the payment data
+       //Printing out the decrypted payment data
+        echo $paymentData;
     }
 
     /**

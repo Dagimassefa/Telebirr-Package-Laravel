@@ -3,7 +3,7 @@
 namespace Dagim\TelebirrApi\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Dagim\TelebirrApi\Models\Telebirr;
+use Dagim\TelebirrApi\Telebirr;
 
 class TelebirrServiceProvider extends ServiceProvider
 {
@@ -14,37 +14,7 @@ class TelebirrServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'telebirr');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'telebirr');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/telebirr.php' => config_path('telebirr.php'),
-            ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/telebirr'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/telebirr'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/telebirr'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
-        }
+        // ...
     }
 
     /**
@@ -56,9 +26,19 @@ class TelebirrServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/telebirr.php', 'telebirr');
 
-        // Register the main class to use with the facade
-        $this->app->singleton('telebirr', function () {
-            return new Telebirr;
+        $this->app->bind(Telebirr::class, function ($app) {
+            return new Telebirr(
+                config('telebirr.app_id'),
+                config('telebirr.app_key'),
+                config('telebirr.public_key'),
+                 config('telebirr.private_key'),
+                config('telebirr.api'),
+                config('telebirr.short_code'),
+                config('telebirr.notify_url'),
+                config('telebirr.return_url'),
+                config('telebirr.timeout_express'),
+                config('telebirr.receive_name')
+            );
         });
     }
 }
