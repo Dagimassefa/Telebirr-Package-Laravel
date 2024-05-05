@@ -72,19 +72,9 @@ $orderResult = $telebirr->createOrder($title, $amount);
 if ($orderResult['success']) {
     // Payment creation successful
     $paymentId = $orderResult['payment_id'];
-    // Proceed with further actions
+   
 } else {
     // Payment creation failed
     $errorMessage = $orderResult['message'];
-    // Handle the error
+  
 }
-
-use Dagim\TelebirrApi\TelebirrNotificationHandler;
-
-$publicKey = "YOUR PUBLIC KEY FROM TELEBIRR ADMIN";
-$payload = "Payload coming from Telebirr"; // This could be request.body if using Django
-
-$decryptedData = TelebirrNotificationHandler::decrypt($publicKey, $payload);
-
-// Handle decrypted data (e.g., update order status)
-```
